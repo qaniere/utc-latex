@@ -1,6 +1,6 @@
 # UTC Latex
 
-*This repository contains **unofficial** LaTeX templates for the [Université de Technologie de Compiègne (UTC)](https://www.utc.fr).
+This repository contains **unofficial** LaTeX templates for the [Université de Technologie de Compiègne (UTC)](https://www.utc.fr).
 
 I'm not the original author of theses, i've simply adapted for my usage. The original authors are :
 
