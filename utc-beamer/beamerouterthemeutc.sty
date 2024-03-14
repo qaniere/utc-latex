@@ -1,0 +1,78 @@
+\def\beamer@themeouter@true{true}
+\def\beamer@themeouter@false{false}
+\def\beamer@themeouter@vertical{vertical}
+\def\beamer@themeouter@withsecplan{false}
+\def\beamer@themeouter@navigation{false}
+
+\DeclareOptionBeamer{navigation}{\def\beamer@themeouter@navigation{#1}}
+\DeclareOptionBeamer{withsecplan}{\def\beamer@themeouter@withsecplan{#1}}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+% Header
+
+\setbeamertemplate{frametitle}{
+  \vskip-1pt
+
+  \begin{beamercolorbox}[center, wd=\textwidth, ht=0.1\paperheight]{structure}
+    \raisebox{-8pt}{\insertframetitle}
+    \rule{\textwidth}{1pt}
+  \end{beamercolorbox}
+
+}
+
+% Footer (A footline in this case)
+
+\setbeamertemplate{footline}{
+
+\begin{center}
+
+  \hskip1cm
+
+  \begin{beamercolorbox}[center, wd=8.8cm,ht=.4cm]{inverted structure}%
+    \makebox[8.7cm][l]{
+      \usebeamerfont{page number in head/foot}
+      \insertshorttitle{}
+      \ifx\insertsection\@empty
+      \relax
+      \else
+      ~\fg~\insertsection
+      \fi
+      \hfill
+      \insertframenumber{} / \inserttotalframenumber
+    }
+    
+    \vskip2pt
+
+  \end{beamercolorbox}
+  
+  \makebox[2cm][r]{
+    \raisebox{-2pt}[-5pt]{\includegraphics[scale=0.2]{sigle.png}}
+  }
+
+  \vskip4pt
+
+\end{center}
+}
+=
+\beamertemplatetransparentcovered
+
+\ifx\beamer@themeouter@navigation\beamer@themeouter@false
+  \setbeamertemplate{navigation symbols}{}
+\fi
+
+\ifx\beamer@themeouter@navigation\beamer@themeouter@vertical
+  \setbeamertemplate{navigation symbols}[vertical]
+\fi
+
+\ifx\beamer@themeouter@withsecplan\beamer@themeouter@true
+\AtBeginSection[]{
+  \begin{frame}<beamer>
+    \frametitle{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\fi
+
+\mode<all>

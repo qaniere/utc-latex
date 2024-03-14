@@ -1,0 +1,47 @@
+\ProvidesPackage{utc-beamer}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
+% Configure the PDF output
+\RequirePackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+  pdfborder=0 0 0,
+  breaklinks=true,
+  bookmarksopen=true,
+  pdfcreator=LaTeX,
+  pdfproducer=LaTeX with package utc-beamer}
+\pdfoutput=1
+\pdfcompresslevel=9
+
+% Choose the lang of the document
+\RequirePackage[french]{babel}
+\RequirePackage[babel,french=guillemets]{csquotes}
+\MakeOuterQuote{"}
+\frenchspacing
+
+% For figures handling
+\RequirePackage{graphicx}
+\RequirePackage{caption}
+\RequirePackage{pifont} % pictos
+\RequirePackage{wasysym} % emojis
+
+% URL insertion without extra style
+\RequirePackage{url}
+\urlstyle{sf}
+\newcommand\urlcolor[1]{\textcolor{blue}{\url{#1}}}
+
+\newcommand{\Num}[1]{\oldstylenums{#1}}
+
+% For tables
+\RequirePackage{multirow}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{colortbl}
+
+% Pretty code snippets
+\RequirePackage[final]{listings}
+
+\RequirePackage{eurosym}
+\RequirePackage{acronym}
