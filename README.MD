@@ -5,7 +5,8 @@ This repository contains **unofficial** LaTeX templates for the [Université de 
 I'm not the original author of theses, i've simply adapted for my usage. The original authors are :
 
 - UTC Beamer : milouse, under the [WTFPL license](./licenses/utc-beamer.txt) ([Source](https://github.com/milouse/utclatex))
-- UTC Report : Florent Chehab, under the [BSD-2 license]()
+- UTC Report : Florent Chehab, under the [BSD-2 license](./licenses/utc-report.txt) ([Source](https://gitlab.utc.fr/LaTeX-UTC/Templates/Rapport-TP-LaTeX-UTC))
+- UTC Article : milouse, under the [WTFPL license](./licenses/utc-article.txt) ([Source](https://github.com/milouse/utclatex))
 
 The [legal notice](https://www.utc.fr/mentions-legales.html) of the UTC website stipulates :
 
@@ -18,14 +19,16 @@ I'm not a (yet) LaTeX master so feel free to open issues if you see something ab
 ## AUR Packaging
 
 These theme are packaged on the [AUR](https://aur.archlinux.org/) :
- - utc-latex-beamer
- - utc-latex-report
+
+- utc-latex-beamer
+- utc-latex-report
+- utc-latex-article
 
 **Todolist** :
 
 - [ ] Add examples
 - [ ] Clean up 'utc-report' package (files and source code)
 - [ ] Clean up AUR packages
-- [ ] Add 'utc-article' package
-- [ ] Add CI/CD
+- [X] Add 'utc-article' package
+- [ ] Add CI/CD (Unsuccessful on ubuntu-latest github actions yet)
 - [ ] Make graphics and color commons for all packages
