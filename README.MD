@@ -26,9 +26,10 @@ These theme are packaged on the [AUR](https://aur.archlinux.org/) :
 
 **Todolist** :
 
+- [ ] Fix utc-report by adding a \utclogo
 - [ ] Add examples
 - [ ] Clean up 'utc-report' package (files and source code)
-- [ ] Clean up AUR packages
+- [ ] Clean up AUR packages (WIP: only utc-report left)
 - [X] Add 'utc-article' package
-- [ ] Add CI/CD (Unsuccessful on ubuntu-latest github actions yet)
+- [X] Add CI/CD (Unsuccessful on ubuntu-latest github actions yet)
 - [ ] Make graphics and color commons for all packages
