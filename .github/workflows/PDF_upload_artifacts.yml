@@ -1,4 +1,4 @@
-name: Build examples
+name: Upload PDF to GitHub artifacts
 on:
   push:
     branches: [ main ]
