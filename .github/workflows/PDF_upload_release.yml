@@ -44,7 +44,7 @@ jobs:
         run: mkdir public && echo "<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><meta http-equiv='refresh' content='0;url=./utc-article.pdf'><title>Redirection vers le PDF</title></head></html>" > public/index.html
 
       - name: Move PDFs
-        run: mv example/utc-example.pdf public
+        run: mv examples/utc-example.pdf public
 
       - name: Deploy to Pages
         uses: peaceiris/actions-gh-pages@v3.8.0
