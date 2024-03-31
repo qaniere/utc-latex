@@ -1,4 +1,4 @@
-name: Upload when release and Update Pages
+name: Build and upload the examples PDF to GitHub Pages at each release
 on:
   push:
     tags:
