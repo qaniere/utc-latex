@@ -11,7 +11,9 @@ jobs:
           uses: actions/checkout@v2
 
         - name: Install dependencies
-          run: apk update && apk add texmf-dist texlive texmf-dist-latexextra nodejs
+          run: apk update && apk add texmf-dist texlive texmf-dist-latexextra \
+               texmf-dist-langfrench \ 
+               nodejs
 
         - name: Build examples
           run: cp -r utc-*/* examples && cd examples && pdflatex -interaction=nonstopmode -halt-on-error utc-*.tex
