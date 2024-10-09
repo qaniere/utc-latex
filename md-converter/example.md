@@ -15,4 +15,4 @@ $meta-semester=A23
 
 ## How does it work ?
 
-Like that !
+ * Like that !
