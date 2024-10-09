@@ -12,7 +12,7 @@ jobs:
 
         - name: Install dependencies
           run: apk update && apk add texmf-dist texlive texmf-dist-latexextra \
-               texmf-dist-langfrench \ 
+               texmf-dist-langfrench-2024 \ 
                nodejs
 
         - name: Build examples
