@@ -10,52 +10,42 @@
 
 \mode<presentation>
 
-% Header
-
+% Header of a frame
 \setbeamertemplate{frametitle}{
   \vskip-1pt
-
   \begin{beamercolorbox}[center, wd=\textwidth, ht=0.1\paperheight]{structure}
     \raisebox{-8pt}{\insertframetitle}
     \rule{\textwidth}{1pt}
   \end{beamercolorbox}
-
 }
 
-% Footer (A footline in this case)
-
+% Footer of a frame (A footline in this case)
+% Footer of a frame (A footline in this case)
 \setbeamertemplate{footline}{
 
 \begin{center}
 
-  \hskip1cm
+  \begin{beamercolorbox}[wd=\beamer@paperwidth, ht=1.2cm, dp=0.2cm, center]{} % Largeur totale de la slide
 
-  \begin{beamercolorbox}[center, wd=8.8cm,ht=.4cm]{inverted structure}%
-    \makebox[8.7cm][l]{
-      \usebeamerfont{page number in head/foot}
-      \insertshorttitle{}
-      \ifx\insertsection\@empty
-      \relax
-      \else
-      ~\fg~\insertsection
-      \fi
+    \hfill
+    \begin{beamercolorbox}[wd=0.6\paperwidth, ht=0.3cm]{inverted structure} % Ajustement de la taille
+      \insertshorttitle
       \hfill
       \insertframenumber{} / \inserttotalframenumber
-    }
-    
-    \vskip2pt
-
+    \end{beamercolorbox}
+    \hfill
+    % Sigle UTC à droite, en dehors du rectangle
+    \makebox[1cm][c]{\includegraphics[scale=0.15]{sigle.png}} % Ajuster la taille du sigle
   \end{beamercolorbox}
-  
-  \makebox[2cm][r]{
-    \raisebox{-2pt}[-5pt]{\includegraphics[scale=0.2]{sigle.png}}
-  }
-
-  \vskip4pt
 
 \end{center}
 }
-=
+
+
+
+
+
+
 \beamertemplatetransparentcovered
 
 \ifx\beamer@themeouter@navigation\beamer@themeouter@false

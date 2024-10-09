@@ -1,0 +1,5 @@
+# UTC LaTeX 
+
+## Developper documentation
+
+ - beamer naming convention are strict, changing the name will break the package !
