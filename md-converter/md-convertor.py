@@ -35,8 +35,9 @@ ejs_env = jinja2.Environment(
 template = ejs_env.from_string(beamer_template)
 rendered_latex = template.render(metadata=metadata, content=final_frames_output)
 
-output_tex_file = args.output_file.replace('.pdf', '.tex')
+output_tex_file = os.path.basename(args.output_file.replace('.pdf', '.tex'))
 with open(output_tex_file, 'w') as file:
     file.write(rendered_latex)
 
 os.system(f"pdflatex -interaction=nonstopmode -halt-on-error {output_tex_file}")
+os.system(f"mv {os.path.basename(args.output_file)} {args.output_file}")
