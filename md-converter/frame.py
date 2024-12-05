@@ -73,21 +73,41 @@ def process_notes(content: str) -> str:
 
 def process_lists(content: str) -> str:
     """
-    Converts Markdown list syntax to LaTeX.
+    Converts Markdown syntax into LaTeX, supporting multiple independent lists 
+    and text blocks on the same frame.
     """
     lines = content.splitlines()
     processed_lines = []
+    inside_list = False  # Tracks if we're currently inside a list
 
     for line in lines:
-        if line.startswith('* '):
-            processed_lines.append(f"        \\item {line[2:]}")
+        stripped_line = line.strip()
+
+        # Detect list item
+        if stripped_line.startswith('* '):
+            # Open a new list if not already inside one
+            if not inside_list:
+                processed_lines.append("\\begin{itemize}")
+                inside_list = True
+            # Add the list item
+            processed_lines.append(f"    \\item {stripped_line[2:]}")
         else:
-            processed_lines.append(line)
+            # Handle non-list lines (e.g., plain text or titles between lists)
+            if inside_list:
+                # Close the list environment
+                processed_lines.append("\\end{itemize}")
+                inside_list = False
+            processed_lines.append(line)  # Add the plain text
 
-    if not any(line.startswith("        \\item") for line in processed_lines):
-        return "\n".join(processed_lines)
+    # Close any remaining open list
+    if inside_list:
+        processed_lines.append("\\end{itemize}")
 
-    return "\\begin{itemize}\n" + "\n".join(processed_lines) + "\n\\end{itemize}"
+    return "\n".join(processed_lines)
+
+
+
+
 
 def finalize_frames(processed_frames: list) -> str:
     """
