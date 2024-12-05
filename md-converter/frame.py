@@ -1,9 +1,6 @@
 import re
 
 def process_frames(frames: list) -> list:
-    """
-    Process frames by applying title and content processing.
-    """
     processed_frames = []
     for title, content in frames:
         title = process_title(title)
@@ -12,26 +9,16 @@ def process_frames(frames: list) -> list:
     return processed_frames
 
 def process_title(title: str) -> str:
-    """
-    Process the title for a frame.
-    """
     return f"\\begin{{frame}}{{{title}}}"
 
 def process_content(content: str) -> str:
-    """
-    Process the content of a Markdown frame.
-    Detects and processes images, lists, notes, and plain text.
-    """
     content = process_images(content)
     content = process_notes(content)
     content = process_lists(content)
+    content = process_text_styles(content)
     return content
 
 def process_images(content: str) -> str:
-    """
-    Converts Markdown image syntax to LaTeX, supporting size configuration.
-    """
-    # ![alt_text](path/to/image){width=...}
     image_pattern = re.compile(r"!\[(.*?)\]\((.*?)\)(?:\{(.*?)\})?")
     lines = content.splitlines()
     processed_lines = []
@@ -51,9 +38,6 @@ def process_images(content: str) -> str:
     return "\n".join(processed_lines)
 
 def process_notes(content: str) -> str:
-    """
-    Detects and converts Markdown notes (lines starting with '>') to LaTeX blocks.
-    """
     note_pattern = re.compile(r"^>\s*(\((.*?)\))?\s*(.*)")
     lines = content.splitlines()
     processed_lines = []
@@ -72,47 +56,36 @@ def process_notes(content: str) -> str:
     return "\n".join(processed_lines)
 
 def process_lists(content: str) -> str:
-    """
-    Converts Markdown syntax into LaTeX, supporting multiple independent lists 
-    and text blocks on the same frame.
-    """
     lines = content.splitlines()
     processed_lines = []
-    inside_list = False  # Tracks if we're currently inside a list
+    inside_list = False
 
     for line in lines:
         stripped_line = line.strip()
 
-        # Detect list item
         if stripped_line.startswith('* '):
-            # Open a new list if not already inside one
             if not inside_list:
                 processed_lines.append("\\begin{itemize}")
                 inside_list = True
-            # Add the list item
             processed_lines.append(f"    \\item {stripped_line[2:]}")
         else:
-            # Handle non-list lines (e.g., plain text or titles between lists)
             if inside_list:
-                # Close the list environment
                 processed_lines.append("\\end{itemize}")
                 inside_list = False
-            processed_lines.append(line)  # Add the plain text
+            processed_lines.append(line)
 
-    # Close any remaining open list
     if inside_list:
         processed_lines.append("\\end{itemize}")
 
     return "\n".join(processed_lines)
 
-
-
-
+def process_text_styles(content: str) -> str:
+    content = re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', content)
+    content = re.sub(r'\*(.*?)\*', r'\\textit{\1}', content)
+    content = re.sub(r'__(.*?)__', r'\\underline{\1}', content)
+    return content
 
 def finalize_frames(processed_frames: list) -> str:
-    """
-    Wraps the processed frames into LaTeX `frame` environments.
-    """
     final_output = []
     for title, content in processed_frames:
         final_output.append(f"{title}\n    {content}\n\\end{{frame}}")

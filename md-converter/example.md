@@ -38,3 +38,7 @@ Liste B :
 
 * yes
 * youpi
+
+## Formatting 
+
+**bold**, *italic* and __underlined__ support
