@@ -20,3 +20,9 @@ $meta-semester=A23
 ## Image support
 
 ![BF](./images/utc.jpeg){width=0.8\textwidth}
+
+## Note support
+
+![BF](./images/utc.jpeg){width=0.6\textwidth}
+
+>(Batiment Benjamin Franklin)Très joli batiment !!

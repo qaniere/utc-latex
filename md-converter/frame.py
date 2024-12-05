@@ -20,29 +20,12 @@ def process_title(title: str) -> str:
 def process_content(content: str) -> str:
     """
     Process the content of a Markdown frame.
-    Detects and processes images, lists, and plain text.
+    Detects and processes images, lists, notes, and plain text.
     """
     content = process_images(content)
+    content = process_notes(content)
     content = process_lists(content)
     return content
-
-def process_lists(content: str) -> str:
-    """
-    Converts Markdown list syntax to LaTeX.
-    """
-    lines = content.splitlines()
-    processed_lines = []
-
-    for line in lines:
-        if line.startswith('* '):
-            processed_lines.append(f"        \\item {line[2:]}")
-        else:
-            processed_lines.append(line)
-
-    if not any(line.startswith("        \\item") for line in processed_lines):
-        return "\n".join(processed_lines)
-
-    return "\\begin{itemize}\n" + "\n".join(processed_lines) + "\n\\end{itemize}"
 
 def process_images(content: str) -> str:
     """
@@ -66,6 +49,45 @@ def process_images(content: str) -> str:
             processed_lines.append(line)
     
     return "\n".join(processed_lines)
+
+def process_notes(content: str) -> str:
+    """
+    Detects and converts Markdown notes (lines starting with '>') to LaTeX blocks.
+    """
+    note_pattern = re.compile(r"^>\s*(\((.*?)\))?\s*(.*)")
+    lines = content.splitlines()
+    processed_lines = []
+
+    for line in lines:
+        match = note_pattern.match(line)
+        if match:
+            block_title = match.group(2) or "Note"
+            block_content = match.group(3)
+            processed_lines.append(
+                f"\\begin{{block}}{{{block_title}}}\n    {block_content}\n\\end{{block}}"
+            )
+        else:
+            processed_lines.append(line)
+    
+    return "\n".join(processed_lines)
+
+def process_lists(content: str) -> str:
+    """
+    Converts Markdown list syntax to LaTeX.
+    """
+    lines = content.splitlines()
+    processed_lines = []
+
+    for line in lines:
+        if line.startswith('* '):
+            processed_lines.append(f"        \\item {line[2:]}")
+        else:
+            processed_lines.append(line)
+
+    if not any(line.startswith("        \\item") for line in processed_lines):
+        return "\n".join(processed_lines)
+
+    return "\\begin{itemize}\n" + "\n".join(processed_lines) + "\n\\end{itemize}"
 
 def finalize_frames(processed_frames: list) -> str:
     """
