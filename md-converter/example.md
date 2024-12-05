@@ -16,3 +16,7 @@ $meta-semester=A23
 ## How does it work ?
 
  * Like that !
+
+## Image support
+
+![BF](./images/utc.jpeg){width=0.8\textwidth}
