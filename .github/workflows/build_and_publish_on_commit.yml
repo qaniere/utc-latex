@@ -13,11 +13,13 @@ jobs:
         - name: Install dependencies
           run: pacman -Sy --noconfirm texlive texlive-basic texlive-latex texlive-latexextra texlive-lang 
 
-        - name: Set environements variables
-          run: export TEXINPUTS=".:../utc-article:../utc-beamer:../utc-common:../utc-report:"
-
         - name: Build "utc-article"
-          run: env && cd examples && ls && pdflatex -interaction=nonstopmode -halt-on-error utc-article.tex
+          env:
+            TEXINPUTS: ".:../utc-article:../utc-beamer:../utc-common:../utc-report:"
+          run: |
+            cd examples
+            pdflatex -interaction=nonstopmode -halt-on-error utc-article.tex
+
 
         - name: Upload "utc-article"
           uses: actions/upload-artifact@v4
