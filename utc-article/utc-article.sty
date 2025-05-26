@@ -1,9 +1,6 @@
-\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{utc-article}
 
 \RequirePackage[left=2.5cm,top=2cm,right=2cm,bottom=3cm,]{geometry}
-
-\newlength{\decallagetitre}
 
 % For A4 format printing
 \DeclareOption{a4book}{%
@@ -37,26 +34,9 @@
 
 \ProcessOptions
 
-\RequirePackage{geometry}
-
 % Accented char support
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-
-% TODO: Clean
-% font (commenter pour pdflatex, décommenter pour xelatex)
-% \RequirePackage{xltxtra}
-% \defaultfontfeatures{Scale=MatchLowercase, Ligatures=TeX}
-% \setmainfont{Libertinus Serif}
-% \setsansfont{Libertinus Sans}
-% \setmonofont{DejaVu Sans Mono}[Scale=0.8, Ligatures=TeXReset]
-
-
-% Lang params
-\RequirePackage[french]{babel}
-\RequirePackage[autostyle=true,english=american,french=guillemets]{csquotes}
-\MakeOuterQuote{"}
-\frenchspacing
 
 % Colors definitions
 \RequirePackage[table,usenames,dvipsnames]{xcolor}
@@ -72,7 +52,6 @@
 \definecolor{fboxcodecolor}{RGB}{183,146,20}
 \definecolor{boxdefcolor}{RGB}{229,235,242}
 \definecolor{fboxdefcolor}{RGB}{52,77,108}
-
 
 % Configure PDF printing
 \RequirePackage{hyperref}
@@ -95,36 +74,19 @@
 
 % Figures handling
 \RequirePackage{graphicx}
-\RequirePackage{caption}
-\RequirePackage{subfigure}
-\RequirePackage{wrapfig}
 
 % URL without blue color
 \RequirePackage{url}
 \urlstyle{sf}
 
-% Tables
-\RequirePackage{multirow}
-\RequirePackage{tabularx}
-\RequirePackage{array}
-\RequirePackage{colortbl}
-\RequirePackage{ltxtable}
-
 % Footer and header
 \RequirePackage{fancyhdr}
 \RequirePackage{lettrine}
 
-% Source codes
-\RequirePackage[final]{listings}
-
+% The € symbol
 \RequirePackage{eurosym}
-\RequirePackage{acronym}
 
-% Dingbats font (useful for custom itemize)
-\RequirePackage{pifont} 
-\RequirePackage{natbib}
-
-% Custom macros and variables
+% Custom macros and variables for UTC
 
 % UV
 \def\@uv{Non renseigné~!}
@@ -138,23 +100,25 @@
 \def\@branche{Non renseigné~!}
 \def\branche#1{\def\@branche{#1}}
 
-% Filière ou master, ou spécialité concernée
+% Applicable major, master's track, or specialization
 \def\@filiere{~}
 \def\filiere#1{\def\@filiere{#1}}
 
-% Filière ou master, ou spécialité concernée, deuxième ligne
+% Applicable major, master's track, or specialization, second line
 \def\@specialite{~}
 \def\specialite#1{\def\@specialite{#1}}
 
-% Logo de l'utc
+% UTC Logo
 \newcommand{\logoutc}[1]{\includegraphics[#1]{utc.png}}
 
+% UTC logo as text
 \newcommand{\logoutctext}{{\large\textsc{Université de Technologie de Compiègne}}}
 
 % Footer and header
 \pagestyle{fancy}
 \fancyhf{}
 
+% Layout
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{5pt}%
 \renewcommand{\footrule}{%
@@ -170,64 +134,7 @@
 \fancyfoot[R]{\footnotesize{\textit{\@title}}}
 
 
-%%%%%%% Custom commands %%%%%%%%
-\newcommand\urlcolor[1]{\textcolor{thalessubtitle}{\url{#1}}}
-
-\newcommand{\Num}[1]{\oldstylenums{#1}}
-
-\newcommand{\cf}[1]{(\emph{cf.} section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1})}
-
-\newcommand{\cfnop}[1]{\emph{cf.} section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1}}
-
-\newcommand{\cfnocf}[1]{(section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1})}
-
-\newcommand{\cfnopnocf}[1]{section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1}}
-
-\newcommand{\cita}[1]{\og\emph{#1}\fg}
-
-\newcommand{\bcode}[1]{
-  \begin{codebox}
-    \textcolor{fboxcodecolor}{\texttt{#1}}
-  \end{codebox}
-}
-\newcommand{\bdef}[1]{
-  \begin{defbox}
-    \textcolor{fboxdefcolor}{\textit{#1}}
-  \end{defbox}
-}
-\newcommand{\onto}[1]{%
-  \fcolorbox{fboxcodecolor}{boxcodecolor}{#1}
-}
-
-\newcommand{\aster}{\ding{93}}
-
-\newcommand\asterism{
-  \begin{center}
-    \vspace{-1em}
-    \parbox{1in}{ % needed to prevent split across page boundaries
-      \begin{center}
-        \aster\\
-        \aster\hspace{1.15em}\aster
-      \end{center}
-    } %\parbox
-    \vspace{-0.75em}
-  \end{center}
-}
-
-\RequirePackage{datetime}
-\newcommand{\colophon}[1]{
-  ~\vfill
-  \begin{center}
-    \smallsize{#1}\\
-    \scriptsize{version du \today{} --- \currenttime}
-  \end{center}
-  \cleardoublepage
-}
-
+% Custom commands
 \newcommand{\titrearticle}{
   \begin{center}
     \vfill
@@ -239,36 +146,20 @@
   \end{center}
 }
 
+% Sections layout
 \renewcommand\section{\@startsection {section}{1}{-1\decallagetitre}%
   {-3.5ex \@plus -1ex \@minus -.2ex}%
   {2.3ex \@plus.2ex}%
   {\normalfont\Large\bfseries}}
+
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
   {-3.25ex\@plus -1ex \@minus -.2ex}%
   {1.5ex \@plus .2ex}%
   {\normalfont\large\bfseries}}
+
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
   {-3.25ex\@plus -1ex \@minus -.2ex}%
   {1.5ex \@plus .2ex}%
   {\normalfont\normalsize\bfseries}}
-
-
-\RequirePackage{framed}
-\newenvironment{codebox}{%
-  \def\FrameCommand{%
-    \fboxsep=\FrameSep \fcolorbox{fboxcodecolor}{boxcodecolor}%
-  }%
-  \MakeFramed{\FrameRestore}%
-}%
-{\endMakeFramed}
-
-\newenvironment{defbox}{%
-  \def\FrameCommand{%
-    \fboxsep=\FrameSep \fcolorbox{fboxdefcolor}{boxdefcolor}%
-  }%
-  \MakeFramed{\FrameRestore}%
-  \noindent\ignorespaces
-}%
-{\endMakeFramed}
 
 \endinput
