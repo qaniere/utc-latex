@@ -1,6 +1,10 @@
 \ProvidesPackage{utc-article}
 
-\RequirePackage[left=2.5cm,top=2cm,right=2cm,bottom=3cm,]{geometry}
+% Define document dimensions
+\RequirePackage[left=2.5cm,top=2cm,right=2cm,bottom=3cm,]{geometry} 
+
+% Import colors from "utc-common"
+\usepackage{utc_colors}
 
 % For A4 format printing
 \DeclareOption{a4book}{%
@@ -38,20 +42,6 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 
-% Colors definitions
-\RequirePackage[table,usenames,dvipsnames]{xcolor}
-\definecolor{orange}{RGB}{250,108,0}
-\definecolor{darkgreen}{RGB}{155,187,89}
-\definecolor{lightgreen}{RGB}{239,243,234}
-\definecolor{othergreen}{RGB}{100,155,61}
-\definecolor{darkred}{RGB}{204,0,0}
-\definecolor{charcoal}{RGB}{28,28,28}
-\definecolor{jauneutc}{RGB}{255,217,17}
-\definecolor{grayutc}{RGB}{117,115,120}
-\definecolor{boxcodecolor}{RGB}{250,241,212}
-\definecolor{fboxcodecolor}{RGB}{183,146,20}
-\definecolor{boxdefcolor}{RGB}{229,235,242}
-\definecolor{fboxdefcolor}{RGB}{52,77,108}
 
 % Configure PDF printing
 \RequirePackage{hyperref}
@@ -109,7 +99,7 @@
 \def\specialite#1{\def\@specialite{#1}}
 
 % UTC Logo
-\newcommand{\logoutc}[1]{\includegraphics[#1]{utc.png}}
+\newcommand{\logoutc}[1]{\includegraphics[#1]{utc_su_logo.png}}
 
 % UTC logo as text
 \newcommand{\logoutctext}{{\large\textsc{Université de Technologie de Compiègne}}}
@@ -122,7 +112,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{5pt}%
 \renewcommand{\footrule}{%
-  {\color{jauneutc}%
+  {\color{utcyellow}%
     \hrule width\headwidth height\footrulewidth \vskip+\footrulewidth}
 }
 

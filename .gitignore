@@ -5,3 +5,6 @@ test.tex
 test.log
 test.out
 test.pdf
+test.aux
+
+texput.log
