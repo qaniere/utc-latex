@@ -6,5 +6,8 @@ test.log
 test.out
 test.pdf
 test.aux
+test.nav
+test.snm
+test.toc
 
 texput.log
