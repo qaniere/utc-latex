@@ -6,4 +6,7 @@ RUN pacman -Sy --noconfirm \
     texlive-latex \
     texlive-latexextra \
     texlive-lang \
-    && pacman -Scc --noconfirm
+    && pacman -Scc --noconfirm \
+    && rm -rf /var/cache/pacman/pkg/* \
+    && rm -rf /var/lib/pacman/sync/* \
+    && rm -rf /tmp/* /root/.cache
