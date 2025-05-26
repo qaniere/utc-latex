@@ -1,28 +1,30 @@
 name: Build and upload the examples PDF to GitHub Artifacts at each commit
+
 on:
   push
+
 jobs:
   build-examples:
     runs-on: ubuntu-latest
     container:
-      image: archlinux:latest
+      image: ghcr.io/${{ github.repository_owner }}/utc-latex-ci:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-        - name: Checkout
-          uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-        - name: Install dependencies
-          run: pacman -Sy --noconfirm texlive texlive-basic texlive-latex texlive-latexextra texlive-lang 
+      - name: Build "utc-article"
+        env:
+          TEXINPUTS: ".:../utc-article:../utc-beamer:../utc-common:../utc-report:"
+        run: |
+          cd examples
+          pdflatex -interaction=nonstopmode -halt-on-error utc-article.tex
 
-        - name: Build "utc-article"
-          env:
-            TEXINPUTS: ".:../utc-article:../utc-beamer:../utc-common:../utc-report:"
-          run: |
-            cd examples
-            pdflatex -interaction=nonstopmode -halt-on-error utc-article.tex
-
-
-        - name: Upload "utc-article"
-          uses: actions/upload-artifact@v4
-          with:
-            name: utc-latex
-            path: examples/utc-article.pdf
+      - name: Upload "utc-article"
+        uses: actions/upload-artifact@v4
+        with:
+          name: utc-latex
+          path: examples/utc-article.pdf
