@@ -1,2 +1,7 @@
 venv
 __pycache__
+
+test.tex
+test.log
+test.out
+test.pdf
