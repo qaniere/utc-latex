@@ -79,6 +79,8 @@
 %Contenu de l'en-tête :
 \lhead{\textsc{\includegraphics[height=1.5cm]{utc_icon.png} \leftmark }} %Section actuelle à gauche de l'en-tête
 \rhead{\theUV} %Code de l'UV à droite de l'en-tête
+\renewcommand{\title}[1]{\def\thetitle{#1}}
+\renewcommand{\author}[1]{\def\theauthor{#1}}
 %Contenu du pied de page :
 \cfoot{\thepage} %Numéro de page au centre
 \lfoot{\theauthor} %auteur(s) à gauche
