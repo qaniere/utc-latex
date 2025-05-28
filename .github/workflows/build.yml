@@ -43,7 +43,7 @@ jobs:
           mv utc-article.pdf utc-report.pdf utc-beamer.pdf public/
           cat <<EOF > public/index.html
           <!DOCTYPE html>
-          <html lang="en">7
+          <html lang="en">
           <head>
             <meta charset="UTF-8">
             <title>UTC LaTeX Examples</title>
