@@ -64,6 +64,7 @@
 
 % Figures handling
 \RequirePackage{graphicx}
+\usepackage{float} % Allow to place figures in multicols
 
 % URL without blue color
 \RequirePackage{url}
@@ -125,7 +126,7 @@
 
 
 % Custom commands
-\newcommand{\titrearticle}{
+\newcommand{\articletitle}{
   \begin{center}
     \vfill
     {\Huge\@title}\\

@@ -1,7 +1,8 @@
 \documentclass[a4paper,12pt]{article}
 
 \usepackage{utc-article}
-\usepackage{lipsum}
+\usepackage{lipsum} % for generating random text
+\usepackage{multicol} % to have multiple colums in one document
 
 \title{UTC \LaTeX : Article}
 \author{John DOE}
@@ -16,22 +17,36 @@
 
 \begin{document}
 
-\titrearticle
+\articletitle
 
-\textbf{Part 1}
+\begin{multicols}{2}
 
-\lipsum[1] \\
+\textbf{Part 1} \\
+\lipsum[1][1]
+\lipsum[1][2]
+\lipsum[1][3]
+\lipsum[1][4]
+\lipsum[1][5] \\
 
-\textbf{Part 2}
+\textbf{Part 2} \\
+\lipsum[2][1]
 
-\lipsum[2] \\
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{img/zoe_hds.jpg}
+\caption{Illustration intégrée dans une seule colonne avec un float.}
+\end{figure}
 
-\textbf{Part 3}
+\lipsum[2][2]
+\lipsum[2][3]
+\lipsum[2][4]
 
-\lipsum[3] \\
+\textbf{Part 3} \\
+\lipsum[3]
 
-\textbf{Conclusion}
-
+\textbf{Conclusion} \\
 \lipsum[4]
+
+\end{multicols}
 
 \end{document}
