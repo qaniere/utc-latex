@@ -2,7 +2,6 @@ name: Package and attach Overleaf ZIPs to GitHub Release
 
 on:
   release:
-    types: [created]
 
 jobs:
   attach-zips-to-release:
