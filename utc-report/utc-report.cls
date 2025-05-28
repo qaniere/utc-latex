@@ -13,7 +13,7 @@
 \pagestyle{fancy} % Header and footer customisation
 
 \usepackage{ulem} % Color underlining
-\usepackage{utc_colors} % UTC colors from 'utc-common'
+\usepackage{utc-common/utc_colors} % UTC colors from 'utc-common'
 
 \ProcessOptions\relax
 
@@ -77,7 +77,7 @@
 } 
 
 % Header content
-\lhead{\textsc{\includegraphics[height=1.5cm]{utc_icon.png} \leftmark }} % Actual section
+\lhead{\textsc{\includegraphics[height=1.5cm]{utc-common/utc_icon.png} \leftmark }} % Actual section
 \rhead{\theUV} % Current UV
 
 % Footer content
@@ -92,7 +92,7 @@
   
   \begin{figure}[H]
     \centering
-    \includegraphics[width=7cm]{utc_su_logo.png}
+    \includegraphics[width=7cm]{utc-common/utc_su_logo.png}
   \end{figure}
 
   \vspace{3cm}
