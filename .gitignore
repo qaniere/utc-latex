@@ -3,7 +3,6 @@ venv
 __pycache__
 
 # Do not include the build files of the examples
-examples/*.tex
 examples/*.log
 examples/*.out
 examples/*.pdf
