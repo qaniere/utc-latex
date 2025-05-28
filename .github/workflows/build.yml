@@ -24,6 +24,8 @@ jobs:
           cd examples
           for file in $EXAMPLES; do
             pdflatex -interaction=nonstopmode -halt-on-error "$file"
+            pdflatex -interaction=nonstopmode -halt-on-error "$file"
+            # compile twice for table of content and bibliography
           done
 
       - name: Upload PDFs
