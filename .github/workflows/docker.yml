@@ -1,9 +1,8 @@
 name: Build and Publish Docker Image
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 0 */14 * *'
 
 jobs:
   build-and-publish:
@@ -21,5 +20,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/utc-latex:latest .
-          docker push ghcr.io/${{ github.repository_owner }}/utc-latex:latest
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/utc-latex-ci:latest
+          docker build -t $IMAGE_NAME .
+          docker push $IMAGE_NAME

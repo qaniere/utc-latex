@@ -1,77 +1,19 @@
-\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{utc-article}
+\makeatletter
 
-\RequirePackage[left=2.5cm,top=2cm,right=2cm,bottom=3cm,]{geometry}
+% Define document dimensions
+\RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,]{geometry} 
 
-\newlength{\decallagetitre}
-
-% For A4 format printing
-\DeclareOption{a4book}{%
-  \PassOptionsToPackage{%
-    a4paper,
-    top=2.5cm,
-    bottom=2cm,
-    left=3cm,
-    right=2cm,
-    asymmetric,
-    marginparwidth=1.2cm
-  }{geometry}%
-  \linespread{1.4}%
-  \setlength{\decallagetitre}{1cm}}
-
-% For e-book publication
-\DeclareOption{pocketbook}{%
-  \PassOptionsToPackage{%
-    paperwidth=80mm,
-    paperheight=104mm,
-    top=3mm,
-    bottom=3mm,
-    includeheadfoot,
-    asymmetric,
-    left=1cm,
-    right=3mm,
-    marginparwidth=1.2cm
-  }{geometry}%
-  \linespread{1.4}%
-  \setlength{\decallagetitre}{5mm}}
+% Import colors from "utc-common"
+\usepackage{utc-common/utc_colors}
 
 \ProcessOptions
-
-\RequirePackage{geometry}
 
 % Accented char support
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 
-% TODO: Clean
-% font (commenter pour pdflatex, décommenter pour xelatex)
-% \RequirePackage{xltxtra}
-% \defaultfontfeatures{Scale=MatchLowercase, Ligatures=TeX}
-% \setmainfont{Libertinus Serif}
-% \setsansfont{Libertinus Sans}
-% \setmonofont{DejaVu Sans Mono}[Scale=0.8, Ligatures=TeXReset]
-
-
-% Lang params
-\RequirePackage[french]{babel}
-\RequirePackage[autostyle=true,english=american,french=guillemets]{csquotes}
-\MakeOuterQuote{"}
-\frenchspacing
-
-% Colors definitions
-\RequirePackage[table,usenames,dvipsnames]{xcolor}
-\definecolor{orange}{RGB}{250,108,0}
-\definecolor{darkgreen}{RGB}{155,187,89}
-\definecolor{lightgreen}{RGB}{239,243,234}
-\definecolor{othergreen}{RGB}{100,155,61}
-\definecolor{darkred}{RGB}{204,0,0}
-\definecolor{charcoal}{RGB}{28,28,28}
-\definecolor{jauneutc}{RGB}{255,217,17}
-\definecolor{grayutc}{RGB}{117,115,120}
-\definecolor{boxcodecolor}{RGB}{250,241,212}
-\definecolor{fboxcodecolor}{RGB}{183,146,20}
-\definecolor{boxdefcolor}{RGB}{229,235,242}
-\definecolor{fboxdefcolor}{RGB}{52,77,108}
+\def\@seccntformat#1{\csname the#1\endcsname.\ }
 
 
 % Configure PDF printing
@@ -95,70 +37,56 @@
 
 % Figures handling
 \RequirePackage{graphicx}
-\RequirePackage{caption}
-\RequirePackage{subfigure}
-\RequirePackage{wrapfig}
+\usepackage{float} % Allow to place figures in multicols
 
 % URL without blue color
 \RequirePackage{url}
 \urlstyle{sf}
 
-% Tables
-\RequirePackage{multirow}
-\RequirePackage{tabularx}
-\RequirePackage{array}
-\RequirePackage{colortbl}
-\RequirePackage{ltxtable}
-
 % Footer and header
 \RequirePackage{fancyhdr}
 \RequirePackage{lettrine}
 
-% Source codes
-\RequirePackage[final]{listings}
-
+% The € symbol
 \RequirePackage{eurosym}
-\RequirePackage{acronym}
 
-% Dingbats font (useful for custom itemize)
-\RequirePackage{pifont} 
-\RequirePackage{natbib}
-
-% Custom macros and variables
+% Custom macros and variables for UTC
 
 % UV
 \def\@uv{Non renseigné~!}
 \def\uv#1{\def\@uv{#1}}
 
 % Semester
-\def\@semestre{Non renseigné~!}
-\def\semestre#1{\def\@semestre{#1}}
+\def\@semester{Non renseigné~!}
+\def\semester#1{\def\@semester{#1}}
 
 % Branch
 \def\@branche{Non renseigné~!}
 \def\branche#1{\def\@branche{#1}}
 
-% Filière ou master, ou spécialité concernée
+% Applicable major, master's track, or specialization
 \def\@filiere{~}
 \def\filiere#1{\def\@filiere{#1}}
 
-% Filière ou master, ou spécialité concernée, deuxième ligne
+% Applicable major, master's track, or specialization, second line
 \def\@specialite{~}
 \def\specialite#1{\def\@specialite{#1}}
 
-% Logo de l'utc
-\newcommand{\logoutc}[1]{\includegraphics[#1]{utc.png}}
+% UTC Logo
+\newcommand{\logoutc}[1]{\includegraphics[#1]{utc-common/utc_su_logo.png}}
 
+% UTC logo as text
 \newcommand{\logoutctext}{{\large\textsc{Université de Technologie de Compiègne}}}
 
 % Footer and header
 \pagestyle{fancy}
 \fancyhf{}
 
+% Layout
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{5pt}%
 \renewcommand{\footrule}{%
-  {\color{jauneutc}%
+  {\color{utcyellow}%
     \hrule width\headwidth height\footrulewidth \vskip+\footrulewidth}
 }
 
@@ -170,105 +98,40 @@
 \fancyfoot[R]{\footnotesize{\textit{\@title}}}
 
 
-%%%%%%% Custom commands %%%%%%%%
-\newcommand\urlcolor[1]{\textcolor{thalessubtitle}{\url{#1}}}
-
-\newcommand{\Num}[1]{\oldstylenums{#1}}
-
-\newcommand{\cf}[1]{(\emph{cf.} section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1})}
-
-\newcommand{\cfnop}[1]{\emph{cf.} section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1}}
-
-\newcommand{\cfnocf}[1]{(section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1})}
-
-\newcommand{\cfnopnocf}[1]{section \ref{#1}, \og\nameref{#1}\fg, %
-  p. \pageref{#1}}
-
-\newcommand{\cita}[1]{\og\emph{#1}\fg}
-
-\newcommand{\bcode}[1]{
-  \begin{codebox}
-    \textcolor{fboxcodecolor}{\texttt{#1}}
-  \end{codebox}
-}
-\newcommand{\bdef}[1]{
-  \begin{defbox}
-    \textcolor{fboxdefcolor}{\textit{#1}}
-  \end{defbox}
-}
-\newcommand{\onto}[1]{%
-  \fcolorbox{fboxcodecolor}{boxcodecolor}{#1}
-}
-
-\newcommand{\aster}{\ding{93}}
-
-\newcommand\asterism{
-  \begin{center}
-    \vspace{-1em}
-    \parbox{1in}{ % needed to prevent split across page boundaries
-      \begin{center}
-        \aster\\
-        \aster\hspace{1.15em}\aster
-      \end{center}
-    } %\parbox
-    \vspace{-0.75em}
-  \end{center}
-}
-
-\RequirePackage{datetime}
-\newcommand{\colophon}[1]{
-  ~\vfill
-  \begin{center}
-    \smallsize{#1}\\
-    \scriptsize{version du \today{} --- \currenttime}
-  \end{center}
-  \cleardoublepage
-}
-
-\newcommand{\titrearticle}{
+% Custom commands
+\newcommand{\articletitle}{
   \begin{center}
     \vfill
     {\Huge\@title}\\
     \vspace{0.5cm}
     {\large\textit{\@author}\\\vspace{0.5cm}\@date}\\
-    \normalsize{\@uv~---~\@semestre}
-    \vspace{1cm}
+    \normalsize{\@uv~---~\@semester}
   \end{center}
 }
 
-\renewcommand\section{\@startsection {section}{1}{-1\decallagetitre}%
-  {-3.5ex \@plus -1ex \@minus -.2ex}%
-  {2.3ex \@plus.2ex}%
+% Default offset for section title if no option was passed
+\providecommand{\titleoffset}{0cm}
+
+% Sections layout
+\renewcommand\section{\@startsection {section}{1}{\titleoffset}%
+  {0.8ex}%
+  {0.8ex}%
   {\normalfont\Large\bfseries}}
+
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-  {-3.25ex\@plus -1ex \@minus -.2ex}%
-  {1.5ex \@plus .2ex}%
+  {0.8ex}%
+  {0.8ex}%
   {\normalfont\large\bfseries}}
+
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-  {-3.25ex\@plus -1ex \@minus -.2ex}%
-  {1.5ex \@plus .2ex}%
+  {0.8ex}%
+  {0.8ex}%
   {\normalfont\normalsize\bfseries}}
 
+% Remove spaces around figures captions
+\usepackage{caption}
+\captionsetup[figure]{skip=2pt}
+\captionsetup[figure]{aboveskip=1pt} 
 
-\RequirePackage{framed}
-\newenvironment{codebox}{%
-  \def\FrameCommand{%
-    \fboxsep=\FrameSep \fcolorbox{fboxcodecolor}{boxcodecolor}%
-  }%
-  \MakeFramed{\FrameRestore}%
-}%
-{\endMakeFramed}
-
-\newenvironment{defbox}{%
-  \def\FrameCommand{%
-    \fboxsep=\FrameSep \fcolorbox{fboxdefcolor}{boxdefcolor}%
-  }%
-  \MakeFramed{\FrameRestore}%
-  \noindent\ignorespaces
-}%
-{\endMakeFramed}
-
+\makeatother
 \endinput

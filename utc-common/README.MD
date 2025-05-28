@@ -1,0 +1,3 @@
+# UTC Common
+
+Common ressources for all UTC LaTeX packages : colors, logos, ...

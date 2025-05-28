@@ -1,14 +1,15 @@
 \documentclass[a4paper,12pt]{article}
 
-\usepackage{utc-article}
-\usepackage{lipsum}
+\usepackage{utc-article/utc-article}
+\usepackage{lipsum} % for generating random text
+\usepackage{multicol} % to have multiple colums in one document
 
 \title{UTC \LaTeX : Article}
 \author{John DOE}
 \date{\today}
 
 \uv{SY02}
-\semestre{A23}
+\semester{A23}
 \branche{GI}
 \filiere{Apprentissage}
 
@@ -16,22 +17,42 @@
 
 \begin{document}
 
-\titrearticle
+\articletitle
 
-\textbf{Part 1}
+\begin{multicols}{2}
 
-\lipsum[1] \\
+\section{Section}
+\subsection{Subsection}
+\lipsum[1][1]
+\lipsum[1][2]
+\lipsum[1][3]
 
-\textbf{Part 2}
+\subsection{Subsection}
+\lipsum[1][4]
+\lipsum[1][5]
+\lipsum[1][6]
+\lipsum[1][7]
 
-\lipsum[2] \\
+\section{Autonomous vehicule}
+\lipsum[2][1]
+\lipsum[2][2]
+\lipsum[2][3]
+\lipsum[2][4]
 
-\textbf{Part 3}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{img/zoe_hds.jpg}
+\caption{Autonomous vehicule of the Heudiasyc laboratory}
+\end{figure}
 
-\lipsum[3] \\
+\lipsum[3]
 
-\textbf{Conclusion}
+\section{Another section}
+\lipsum[3]
 
+\section{Conclusion}
 \lipsum[4]
+
+\end{multicols}
 
 \end{document}

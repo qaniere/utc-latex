@@ -1,3 +1,6 @@
+% UTC-Beamer
+% Outer theme file (Headers, footers, numbering, sidebars)
+
 \def\beamer@themeouter@true{true}
 \def\beamer@themeouter@false{false}
 \def\beamer@themeouter@vertical{vertical}
@@ -28,9 +31,9 @@
         \usebeamerfont{page number in head/foot}
         \insertshorttitle{}
         \ifx\insertsection\@empty
-        \relax
+          \relax
         \else
-        ~\fg~\insertsection
+          ~\textendash~\insertsection
         \fi
         \hfill
         \insertframenumber{} / \inserttotalframenumber
@@ -43,34 +46,34 @@
     
     \hfill\hfill\hfill
     \makebox[2cm][l]{
-      \raisebox{-2pt}[-5pt]{\includegraphics[scale=0.2]{sigle.png}}
+      \raisebox{-2pt}[-5pt]{\includegraphics[scale=0.2]{utc-common/utc_icon.png}}
     }
     
   \vskip4pt
 }
 
-
-
-
-
-
+% Make covered items semi-transparent instead of fully hidden
 \beamertemplatetransparentcovered
 
+% Hide navigation symbols if navigation=false
 \ifx\beamer@themeouter@navigation\beamer@themeouter@false
   \setbeamertemplate{navigation symbols}{}
 \fi
 
+% Use vertical navigation symbols if navigation=vertical
 \ifx\beamer@themeouter@navigation\beamer@themeouter@vertical
   \setbeamertemplate{navigation symbols}[vertical]
 \fi
 
+% Show a table of contents slide at each new section if withsecplan=true
 \ifx\beamer@themeouter@withsecplan\beamer@themeouter@true
-\AtBeginSection[]{
-  \begin{frame}<beamer>
-    \frametitle{Plan}
-    \tableofcontents[currentsection]
-  \end{frame}
-}
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \frametitle{Plan}
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
 \fi
 
+% Return to processing all modes (not just presentation)
 \mode<all>

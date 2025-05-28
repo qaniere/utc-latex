@@ -1,28 +1,33 @@
-\documentclass{report-UTC}
-% Pour retirer le thème couleur UTC,
-%   Commenter la ligne précédente
-%   Décommenter la ligne dessous
-% \documentclass[noUTCcolors]{report-UTC}
+\documentclass{utc-report/utc-report}
 
-\UV{UVXX} %Nom de l'UV
-\title{TPX : Lorem ipsum}
-\author{{\sc Nom} Prénom \\ {\sc Nom} Prénom}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
 
+\UV{SY02} 
+\title{UTC LaTeX report}
+\author{John \sc{DOE}}
 
 \begin{document}
-\subfile{src/titlePage}
-\tableofcontents{} %Commenter/supprimer pour enlever la table des matières
 
-\vspace{2cm} %À enlever
+\maketitlepage
 
-% Décommenter les trois lignes ci-dessous pour sauter une page après la table des matières, et mettre celle-ci sur une page sans en-tête, pied de page et numéro (recommandé)
+\tableofcontents{}
 
-%\thispagestyle{empty}
-%\setcounter{page}{0}
-%\newpage
+\pagebreak
 
+\section{Section}
+\section{Subsection}
+\subsection{Subsubsection}
 
-\subfile{src/content}
+You can edit this.
 
-\[ \star \quad \star \quad \star \]
+% Uncomment this to insert an figure
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.7\linewidth]{img/zoe_hds.jpg}
+%     \caption{Autonomous vehicle of the Heudiasyc laboratory}
+% \end{figure}
+
 \end{document}

@@ -1,2 +1,16 @@
+# Remains on an Python app
 venv
 __pycache__
+
+# Do not include the build files of the examples
+examples/*.log
+examples/*.out
+examples/*.pdf
+examples/*.aux
+examples/*.nav
+examples/*.snm
+examples/*.toc
+texput.log
+
+# release zip
+*.zip

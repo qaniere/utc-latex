@@ -25,7 +25,7 @@
 \useoutertheme[navigation=\beamer@theme@navigation,withsecplan=\beamer@theme@withsecplan]{utc}
 \useinnertheme[rounded=\beamer@theme@rounded,shadowed=\beamer@theme@shadowed]{utc}
 
-\usecolortheme{utc}
+\usecolortheme{utc} % the color theme defined in 'beamercolorthemeutc.sty'
 
 \mode<all>
 
@@ -42,32 +42,34 @@
 \def\@uv{}
 \def\uv#1{\def\@uv{#1}}
 
-% Semestre concernée
-\def\@semestre{}
-\def\semestre#1{\def\@semestre{#1}}
+% Semester
+\def\@semester{}
+\def\semester#1{\def\@semester{#1}}
 
-% UTC LOGO
-\newcommand{\logoutc}[1]{\includegraphics[#1]{utc.png}}
+% UTC Logo
+\newcommand{\logoutc}[1]{\includegraphics[#1]{utc-common/utc_su_logo.png}}
 \newcommand{\logoutctext}{UNIVERSITÉ DE TECHNOLOGIE DE COMPIÈGNE}
 
-\newcommand{\insertuvsemestre}{
+% Command to insert properly the semester
+\newcommand{\insertuvsemester}{
   \ifx\@uv\@empty
     \relax
   \else
     \@uv
-    \ifx\@semestre\@empty
+    \ifx\@semester\@empty
       \\
     \else
       ~---
     \fi
   \fi
-  \ifx\@semestre\@empty
+  \ifx\@semester\@empty
     \relax
   \else
-    \@semestre\\
+    \@semester\\
   \fi
 }
 
+% Title page of the beamer
 \newcommand{\utctitlepage}{
   \raisebox{-11pt}[0pt]{\logoutc{width=3cm}}
   \usebeamercolor{inverted structure}
@@ -91,13 +93,14 @@
       \else
         \insertinstitute\\
       \fi
-      \insertuvsemestre
+      \insertuvsemester
       \insertdate
     \end{footnotesize}
     \vfill
   \end{center}
 }
 
+% End page of the beamer
 \newcommand{\utcthankspage}[1][Thanks]{
   \raisebox{-11pt}[0pt]{\logoutc{width=3cm}}
   \usebeamercolor{inverted structure}
@@ -123,7 +126,7 @@
         ~---~\insertsubtitle
       \fi\\
       \vspace{.5cm}
-      \insertuvsemestre
+      \insertuvsemester
       \insertdate
     \end{footnotesize}
     \vfill
