@@ -9,8 +9,8 @@
 \usepackage{xspace} % Spaces at the end of latex macros
 \usepackage{enumitem} %For custom itemize
 \geometry{vmargin=3cm, textwidth=16cm} % Margins
-\usepackage{fancyhdr}		% Header and footer customisation
-\pagestyle{fancy}			% Header and footer customisation
+\usepackage{fancyhdr} % Header and footer customisation
+\pagestyle{fancy} % Header and footer customisation
 
 \usepackage{ulem} % Color underlining
 \usepackage{utc_colors} % UTC colors from 'utc-common'
