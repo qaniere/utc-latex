@@ -9,11 +9,11 @@
 \usepackage{xspace} % Spaces at the end of latex macros
 \usepackage{enumitem} %For custom itemize
 \geometry{vmargin=3cm, textwidth=16cm} % Margins
-\usepackage{fancyhdr}		% Pour l'entête et les pieds de page
-\pagestyle{fancy}			% Pour l'entête et les pieds de page
+\usepackage{fancyhdr}		% Header and footer customisation
+\pagestyle{fancy}			% Header and footer customisation
 
 \usepackage{ulem} % Color underlining
-\usepackage{utc_colors} % UTC colorsfrom 'utc-common'
+\usepackage{utc_colors} % UTC colors from 'utc-common'
 
 \ProcessOptions\relax
 
@@ -83,3 +83,34 @@
 % Footer content
 \cfoot{\thepage} % Page number
 \lfoot{\theauthor} % Autors
+
+
+% Title page
+\newcommand{\maketitlepage}{
+  \thispagestyle{empty}
+  \setcounter{page}{0}
+  
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{utc_su_logo.png}
+  \end{figure}
+
+  \vspace{3cm}
+  
+  \begin{center}
+  {\color{utcyellow}\rule{\linewidth}{0.8mm}}
+  \vspace*{0mm}
+  
+  \Huge{\textbf{\theUV \\ \thetitle}}
+  {\color{utcyellow}\rule{\linewidth}{0.8mm}}
+
+  \vspace{0.5cm}
+  \Large{\theauthor} \\
+
+  \vspace{7cm}
+  \Large{\today}
+  \end{center}
+  
+  \vspace{3cm}
+  \pagebreak
+}
