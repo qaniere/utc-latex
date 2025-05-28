@@ -42,23 +42,23 @@ jobs:
           mkdir -p public
           mv utc-article.pdf utc-report.pdf utc-beamer.pdf public/
           cat <<EOF > public/index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>UTC LaTeX Examples</title>
-</head>
-<body>
-  <h1>UTC LaTeX PDF Examples</h1>
-  <ul>
-    <li><a href="utc-article.pdf">utc-article.pdf</a> — Article template</li>
-    <li><a href="utc-report.pdf">utc-report.pdf</a> — Report template</li>
-    <li><a href="utc-beamer.pdf">utc-beamer.pdf</a> — Beamer template</li>
-  </ul>
-  <p>See the full source code on <a href="https://github.com/${{ github.repository }}">GitHub</a>.</p>
-</body>
-</html>
-EOF
+          <!DOCTYPE html>
+          <html lang="en">7
+          <head>
+            <meta charset="UTF-8">
+            <title>UTC LaTeX Examples</title>
+          </head>
+          <body>
+            <h1>UTC LaTeX PDF Examples</h1>
+            <ul>
+              <li><a href="utc-article.pdf">utc-article.pdf</a> — Article template</li>
+              <li><a href="utc-report.pdf">utc-report.pdf</a> — Report template</li>
+              <li><a href="utc-beamer.pdf">utc-beamer.pdf</a> — Beamer template</li>
+            </ul>
+            <p>See the full source code on <a href="https://github.com/${{ github.repository }}">GitHub</a>.</p>
+          </body>
+          </html>
+          EOF
 
 
       - name: Deploy to GitHub Pages
