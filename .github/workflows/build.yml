@@ -18,7 +18,7 @@ jobs:
 
       - name: Build examples
         env:
-          TEXINPUTS: ".:../utc-article:../utc-beamer:../utc-common:../utc-report:"
+          TEXINPUTS: ".:..:"
           EXAMPLES: "utc-article.tex utc-report.tex utc-beamer.tex"
         run: |
           cd examples
