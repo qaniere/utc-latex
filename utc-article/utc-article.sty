@@ -1,7 +1,7 @@
 \ProvidesPackage{utc-article}
 
 % Define document dimensions
-\RequirePackage[left=2.5cm,top=2cm,right=2cm,bottom=3cm,]{geometry} 
+\RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,]{geometry} 
 
 % Import colors from "utc-common"
 \usepackage{utc_colors}
@@ -18,7 +18,7 @@
     marginparwidth=1.2cm
   }{geometry}%
   \linespread{1.4}%
-  \setlength{\decallagetitre}{1cm}}
+  \setlength{\titleoffset}{1cm}}
 
 % For e-book publication
 \DeclareOption{pocketbook}{%
@@ -34,7 +34,7 @@
     marginparwidth=1.2cm
   }{geometry}%
   \linespread{1.4}%
-  \setlength{\decallagetitre}{5mm}}
+  \setlength{\titleoffset}{5mm}}
 
 \ProcessOptions
 
@@ -133,12 +133,14 @@
     \vspace{0.5cm}
     {\large\textit{\@author}\\\vspace{0.5cm}\@date}\\
     \normalsize{\@uv~---~\@semester}
-    \vspace{1cm}
   \end{center}
 }
 
+% Default offset for section title if no option was passed
+\providecommand{\titleoffset}{0cm}
+
 % Sections layout
-\renewcommand\section{\@startsection {section}{1}{-1\decallagetitre}%
+\renewcommand\section{\@startsection {section}{1}{-1\titleoffset}%
   {-3.5ex \@plus -1ex \@minus -.2ex}%
   {2.3ex \@plus.2ex}%
   {\normalfont\Large\bfseries}}
