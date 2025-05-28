@@ -19,7 +19,7 @@ jobs:
       - name: Build examples
         env:
           TEXINPUTS: ".:../utc-article:../utc-beamer:../utc-common:../utc-report:"
-          EXAMPLES: "utc-article.tex utc-report.tex"
+          EXAMPLES: "utc-article.tex utc-report.tex utc-beamer.tex"
         run: |
           cd examples
           for file in $EXAMPLES; do
@@ -33,3 +33,4 @@ jobs:
           path: |
             examples/utc-article.pdf
             examples/utc-report.pdf
+            examples/utc-beamer.pdf
