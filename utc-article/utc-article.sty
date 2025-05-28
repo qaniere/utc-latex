@@ -1,4 +1,5 @@
 \ProvidesPackage{utc-article}
+\makeatletter
 
 % Define document dimensions
 \RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,]{geometry} 
@@ -6,41 +7,13 @@
 % Import colors from "utc-common"
 \usepackage{utc_colors}
 
-% For A4 format printing
-\DeclareOption{a4book}{%
-  \PassOptionsToPackage{%
-    a4paper,
-    top=2.5cm,
-    bottom=2cm,
-    left=3cm,
-    right=2cm,
-    asymmetric,
-    marginparwidth=1.2cm
-  }{geometry}%
-  \linespread{1.4}%
-  \setlength{\titleoffset}{1cm}}
-
-% For e-book publication
-\DeclareOption{pocketbook}{%
-  \PassOptionsToPackage{%
-    paperwidth=80mm,
-    paperheight=104mm,
-    top=3mm,
-    bottom=3mm,
-    includeheadfoot,
-    asymmetric,
-    left=1cm,
-    right=3mm,
-    marginparwidth=1.2cm
-  }{geometry}%
-  \linespread{1.4}%
-  \setlength{\titleoffset}{5mm}}
-
 \ProcessOptions
 
 % Accented char support
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
+
+\def\@seccntformat#1{\csname the#1\endcsname.\ }
 
 
 % Configure PDF printing
@@ -140,7 +113,7 @@
 \providecommand{\titleoffset}{0cm}
 
 % Sections layout
-\renewcommand\section{\@startsection {section}{1}{-1\titleoffset}%
+\renewcommand\section{\@startsection {section}{1}{\titleoffset}%
   {-3.5ex \@plus -1ex \@minus -.2ex}%
   {2.3ex \@plus.2ex}%
   {\normalfont\Large\bfseries}}
@@ -155,4 +128,5 @@
   {1.5ex \@plus .2ex}%
   {\normalfont\normalsize\bfseries}}
 
+\makeatother
 \endinput
