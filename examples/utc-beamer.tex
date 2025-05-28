@@ -1,14 +1,17 @@
 \documentclass[aspectratio=169]{beamer}
 
+% Packages and theme
 \usepackage{graphicx}
 \usepackage{utc-beamer}
 
 \usetheme{utc}
 
-\title{UTC LaTeX beamer}
+\title{UTC LaTeX beamer theme}
+\subtitle{A great theme}
 \author{John DOE}
-\institute{UTC/GI/HDS}
+\institute{UTC / Heudiasyc Laboratory}
 \date{\today}
+\email{john.doe@utc.fr}
 \uv{SY02}
 \semester{P25}
 
@@ -16,16 +19,38 @@
 
 \frame[plain]{\utctitlepage}
 
-\begin{frame}{UTC Beamer}
-    \begin{itemize}
+\section{Introduction}
 
-        \item This the first slide of this presentation
-        \item Lorem ipsum
-        \item Dolor sit amet
-
-    \end{itemize}
+\begin{frame}{Why Use Beamer?}
+  \begin{itemize}
+    \item Professional academic layout
+    \item Consistent UTC visual identity
+    \item Easy customization
+  \end{itemize}
 \end{frame}
 
-\frame[plain]{\utcthankspage[Thank you!]}
+\section{Demonstration}
+
+\begin{frame}{Image Example}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/zoe_hds.jpg}
+    \caption{Autonomous vehicle of the Heudiasyc laboratory}
+  \end{figure}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+    \item Clean title and thank-you pages
+    \item Section plans generated automatically
+    \item Color themes, highlights, and institutional branding
+    \item Easy integration of figures and metadata
+  \end{itemize}
+\end{frame}
+
+% Thank You Page
+\frame[plain]{\utcthankspage[Thank you for your attention!]}
 
 \end{document}
