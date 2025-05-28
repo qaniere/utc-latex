@@ -5,7 +5,7 @@
 \RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,]{geometry} 
 
 % Import colors from "utc-common"
-\usepackage{utc_colors}
+\usepackage{utc-common/utc_colors}
 
 \ProcessOptions
 
@@ -73,7 +73,7 @@
 \def\specialite#1{\def\@specialite{#1}}
 
 % UTC Logo
-\newcommand{\logoutc}[1]{\includegraphics[#1]{utc_su_logo.png}}
+\newcommand{\logoutc}[1]{\includegraphics[#1]{utc-common/utc_su_logo.png}}
 
 % UTC logo as text
 \newcommand{\logoutctext}{{\large\textsc{Université de Technologie de Compiègne}}}
