@@ -11,3 +11,6 @@ examples/*.nav
 examples/*.snm
 examples/*.toc
 texput.log
+
+# release zip
+*.zip
