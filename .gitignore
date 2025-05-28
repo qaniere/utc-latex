@@ -1,13 +1,14 @@
+# Remains on an Python app
 venv
 __pycache__
 
-test.tex
-test.log
-test.out
-test.pdf
-test.aux
-test.nav
-test.snm
-test.toc
-
+# Do not include the build files of the examples
+examples/*.tex
+examples/*.log
+examples/*.out
+examples/*.pdf
+examples/*.aux
+examples/*.nav
+examples/*.snm
+examples/*.toc
 texput.log
