@@ -1,6 +1,7 @@
 FROM archlinux:latest
 
 RUN pacman -Sy --noconfirm \
+    git \
     texlive \
     texlive-basic \
     texlive-latex \
