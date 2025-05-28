@@ -1,0 +1,50 @@
+name: Package and attach Overleaf ZIPs to GitHub Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  attach-zips-to-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make release script executable
+        run: chmod +x release.sh
+
+      - name: Run release script
+        run: ./release.sh
+
+      - name: Upload utc-article-overleaf.zip
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name }}
+          name: ${{ github.event.release.name }}
+          files: utc-article-overleaf.zip
+
+      - name: Upload utc-beamer-overleaf.zip
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name }}
+          name: ${{ github.event.release.name }}
+          files: utc-beamer-overleaf.zip
+
+      - name: Upload utc-report-overleaf.zip
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name }}
+          name: ${{ github.event.release.name }}
+          files: utc-report-overleaf.zip
+
+      - name: Upload utc-latex.zip
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name }}
+          name: ${{ github.event.release.name }}
+          files: utc-latex.zip
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
