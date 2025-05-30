@@ -4,7 +4,7 @@
 
 \usepackage[T1]{fontenc} % French accents
 \usepackage{graphicx} % Figures
-\usepackage[headheight=61pt,bottom=1cm]{geometry} % Margins
+\usepackage[headheight=61pt]{geometry} % Margins
 \usepackage{float} % Layout stuff
 \usepackage{xspace} % Spaces at the end of latex macros
 \usepackage{enumitem} %For custom itemize
@@ -72,7 +72,7 @@
 \renewcommand{\footrulewidth}{1.5pt} % Thickness of the footer line 
 
 % Set the footer size
-\setlength{\footskip}{15mm} 
+\setlength{\footskip}{22mm} 
 
 %Changing the color of the footer line
 \renewcommand{\footrule}{%
