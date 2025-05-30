@@ -77,12 +77,13 @@
 } 
 
 % Header content
-\lhead{\textsc{\includegraphics[height=1.5cm]{utc-common/utc_icon.png} \leftmark }} % Actual section
+\lhead{\textsc{\includegraphics[height=1cm]{utc-common/utc_icon.png} \leftmark }} % Actual section
 \rhead{\theUV} % Current UV
 
 % Footer content
 \cfoot{\thepage} % Page number
 \lfoot{\theauthor} % Autors
+\rfoot{\includegraphics[height=0.5cm]{utc-common/utc_icon.png}} % UTC Icon 
 
 % No space after section number
 \makeatletter
