@@ -84,6 +84,10 @@
 \cfoot{\thepage} % Page number
 \lfoot{\theauthor} % Autors
 
+% No space after section number
+\makeatletter
+\def\@seccntformat#1{\csname the#1\endcsname.\ }
+\makeatother
 
 % Title page
 \newcommand{\maketitlepage}{
