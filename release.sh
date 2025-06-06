@@ -16,6 +16,7 @@ for template in "${TEMPLATES[@]}"; do
   mkdir -p tmp-overleaf
   cp "${template}/main.tex" tmp-overleaf/
   cp -r "${template}" tmp-overleaf/
+  rm "tmp-overleaf/${template}/main.tex"
   cp -r utc-common tmp-overleaf/
 
   (cd tmp-overleaf && zip -r "../$zipname" .)
