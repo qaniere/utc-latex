@@ -115,7 +115,10 @@
   \vspace{2cm}
 
   \Large{\theauthor} \\[0.5cm]
-  \large{\thesupervisor} \\
+  \@ifundefined{thesupervisor}{}{
+    \large{\thesupervisor} \\
+  }
+
 
 
   \vspace{7cm}
