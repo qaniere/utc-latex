@@ -22,6 +22,7 @@
 \renewcommand{\labelitemii}{\color{utcgray}$\bullet$} % itemize level 2
 \renewcommand{\title}[1]{\def\thetitle{#1}}
 \renewcommand{\author}[1]{\def\theauthor{#1}}
+\newcommand{\supervisor}[1]{\def\thesupervisor{#1}}
 \makeatletter
 
 % Sections underlined in utcyellow
@@ -111,9 +112,11 @@
   
   \Huge{\textbf{\theUV \\ \thetitle}}
   {\color{utcyellow}\rule{\linewidth}{0.8mm}}
+  \vspace{2cm}
 
-  \vspace{0.5cm}
-  \Large{\theauthor} \\
+  \Large{\theauthor} \\[0.5cm]
+  \large{\thesupervisor} \\
+
 
   \vspace{7cm}
   \Large{\today}
