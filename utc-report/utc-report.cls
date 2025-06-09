@@ -23,6 +23,11 @@
 \renewcommand{\title}[1]{\def\thetitle{#1}}
 \renewcommand{\author}[1]{\def\theauthor{#1}}
 \newcommand{\supervisor}[1]{\def\thesupervisor{#1}}
+\newcommand{\displaysupervisor}{%
+  \@ifundefined{thesupervisor}{}{%
+    \large{\thesupervisor} \\[0.5cm]
+  }%
+}
 \makeatletter
 
 % Sections underlined in utcyellow
@@ -115,11 +120,7 @@
   \vspace{2cm}
 
   \Large{\theauthor} \\[0.5cm]
-  \@ifundefined{thesupervisor}{}{
-    \large{\thesupervisor} \\
-  }
-
-
+  \displaysupervisor
 
   \vspace{7cm}
   \Large{\today}
