@@ -1,4 +1,4 @@
-\ProvidesClass{utc-report}
+\ProvidesClass{utc-report/utc-report}
 
 \LoadClass[a4paper,12pt]{article}
 
