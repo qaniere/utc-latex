@@ -4,7 +4,7 @@
 
 \usepackage[T1]{fontenc} % French accents
 \usepackage{graphicx} % Figures
-\usepackage[headheight=61pt]{geometry} % Margins
+\usepackage[headheight=61pt,bottom=1cm]{geometry} % Margins
 \usepackage{float} % Layout stuff
 \usepackage{xspace} % Spaces at the end of latex macros
 \usepackage{enumitem} %For custom itemize
@@ -26,6 +26,19 @@
 \newcommand{\displaysupervisor}{%
   \@ifundefined{thesupervisor}{}{%
     \large{\thesupervisor} \\[0.5cm]
+  }%
+}
+\newcommand{\partnerlogofooter}[1]{\def\thepartnerlogofooter{#1}}
+\newcommand{\partnerlogotitle}[1]{\def\thepartnerlogotitle{#1}}
+\newcommand{\displaypartnerlogofooter}{%
+  \@ifundefined{thepartnerlogofooter}{}{%
+    \includegraphics[height=0.5cm]{\thepartnerlogofooter}%
+  }%
+}
+
+\newcommand{\displaypartnerlogotitle}{%
+  \@ifundefined{thepartnerlogotitle}{}{%
+    \includegraphics[width=5cm]{\thepartnerlogotitle}%
   }%
 }
 \makeatletter
@@ -78,7 +91,7 @@
 \renewcommand{\footrulewidth}{1.5pt} % Thickness of the footer line 
 
 % Set the footer size
-\setlength{\footskip}{22mm} 
+\setlength{\footskip}{15mm} 
 
 %Changing the color of the footer line
 \renewcommand{\footrule}{%
@@ -92,7 +105,11 @@
 % Footer content
 \cfoot{\thepage} % Page number
 \lfoot{\theauthor} % Autors
-\rfoot{\includegraphics[height=0.5cm]{utc-common/utc_icon.png}} % UTC Icon 
+\rfoot{%
+  \includegraphics[height=0.5cm]{utc-common/utc_icon.png}%
+  \hspace{0.5cm}%
+  \displaypartnerlogofooter
+}
 
 % No space after section number
 \makeatletter
@@ -107,6 +124,9 @@
   \begin{figure}[H]
     \centering
     \includegraphics[width=7cm]{utc-common/utc_su_logo.png}
+    
+    \vspace{1cm}
+    \displaypartnerlogotitle
   \end{figure}
 
   \vspace{3cm}
@@ -122,10 +142,29 @@
   \Large{\theauthor} \\[0.5cm]
   \displaysupervisor
 
-  \vspace{7cm}
+  \vspace{5cm}
   \Large{\today}
   \end{center}
   
   \vspace{3cm}
   \pagebreak
 }
+
+\makeatletter
+
+% Custom itemize with UTC yellow
+\newif\ifutc@customitemize
+\utc@customitemizetrue % Enabled by default
+
+% Option to disable it
+\newcommand{\disableutcitemize}{\utc@customitemizefalse}
+
+% Redefine the itemize if enabled
+\AtBeginDocument{%
+  \ifutc@customitemize
+    \setlist[itemize,1]{label=\raisebox{0.2ex}{\includegraphics[height=1ex]{utc-common/utc_dot.png}}, labelsep=0.6em, left=1.5em}
+    \renewcommand{\labelitemii}{\raisebox{0.15ex}{\includegraphics[height=0.7ex]{utc-common/utc_dot.png}}}
+  \fi
+}
+
+\makeatother
