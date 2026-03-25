@@ -52,7 +52,7 @@
 
 \titlespacing*{\section}
   {0pt}
-  {-3.5ex \@plus -1ex \@minus -.2ex}
+  {2ex}
   {1.2ex}
 
 % Subsections bigger
