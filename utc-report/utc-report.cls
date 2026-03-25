@@ -12,7 +12,6 @@
 \usepackage{fancyhdr} % Header and footer customisation
 \pagestyle{fancy} % Header and footer customisation
 
-\usepackage{ulem} % Color underlining
 \usepackage{utc-common/utc_colors} % UTC colors from 'utc-common'
 
 \ProcessOptions\relax
@@ -44,16 +43,18 @@
 \makeatletter
 
 % Sections underlined in utcyellow
-\newcommand\sectionuline{
-  \bgroup\markoverwith{\textcolor{utcyellow}{\rule[-0.5ex]{0.1mm}{0.5mm}}}%
-  \ULon%
-}
-
-% Sections bigger and underlined
 \renewcommand\section{\@startsection {section}{1}{\z@}
   {-3.5ex \@plus -1ex \@minus -.2ex}%
-  {2.3ex \@plus .2ex}%
-  {\normalfont\LARGE\bfseries\sectionuline}%
+  {0.5ex}%
+  {\normalfont\LARGE\bfseries\color{black}}%
+}
+
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \oldsection{#1}%
+  \vspace{-2.2ex}
+  {\color{utcyellow}\rule{\linewidth}{0.6mm}}
+  \vspace{0.4ex}
 }
 
 % Subsections bigger
