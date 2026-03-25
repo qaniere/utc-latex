@@ -12,6 +12,7 @@
 \usepackage{fancyhdr} % Header and footer customisation
 \pagestyle{fancy} % Header and footer customisation
 
+\usepackage{titlesec}
 \usepackage{utc-common/utc_colors} % UTC colors from 'utc-common'
 
 \ProcessOptions\relax
@@ -40,52 +41,47 @@
     \includegraphics[width=5cm]{\thepartnerlogotitle}%
   }%
 }
-\makeatletter
 
 % Sections underlined in utcyellow
-\renewcommand\section{\@startsection {section}{1}{\z@}
-  {-3.5ex \@plus -1ex \@minus -.2ex}%
-  {0.5ex}%
-  {\normalfont\LARGE\bfseries\color{black}}%
-}
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries\color{black}}
+  {\thesection.}
+  {0.5em}
+  {}
+  [\vspace{-1.8ex}\color{utcyellow}\rule{\linewidth}{0.6mm}]
 
-\let\oldsection\section
-\renewcommand{\section}[1]{%
-  \oldsection{#1}%
-  \vspace{-2.2ex}
-  {\color{utcyellow}\rule{\linewidth}{0.6mm}}
-  \vspace{0.4ex}
-}
+\titlespacing*{\section}
+  {0pt}
+  {-3.5ex \@plus -1ex \@minus -.2ex}
+  {1.2ex}
 
 % Subsections bigger
-\renewcommand\subsection{\@startsection {subsection}{2}{0em}
-  {-3ex \@plus -0.8ex \@minus -.2ex}%
-  {1.8ex \@plus .2ex}%
-  {\normalfont\Large\bfseries}%
-}
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}
+  {\thesubsection}
+  {0.5em}
+  {}
 
 % Subsections bigger and in gray UTC
-\renewcommand\subsubsection{\@startsection {subsubsection}{3}{0em}
-  {-2.5ex \@plus -0.6ex \@minus -.2ex}%
-  {1.8ex \@plus .2ex}%
-  {\normalfont\large\bfseries\color{utcgray}}%
-}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{utcgray}}
+  {\thesubsubsection}
+  {0.5em}
+  {}
 
 % Paragraph bigger and in light gray utc
-\renewcommand\paragraph{\@startsection {paragraph}{4}{3em}
-  {-2ex \@plus -0.4ex \@minus -.2ex}%
-  {1.3ex \@plus .2ex}%
-  {\normalfont\large\bfseries\color{utcgray_light}}%
-}
+\titleformat{\paragraph}
+  {\normalfont\large\bfseries\color{utcgray_light}}
+  {\theparagraph}
+  {0.5em}
+  {}
 
 % Subparagraph in light gray utc
-\renewcommand\subparagraph{\@startsection {subparagraph}{5}{4em}% Redéfinition de la commande subparagraph (en gris clair UTC)
-  {-1.5ex \@plus -0.2ex \@minus -.2ex}%
-  {.8ex \@plus .2ex}%
-  {\normalfont\bfseries\color{utcgray_light}}%
-}
-
-\makeatother
+\titleformat{\subparagraph}
+  {\normalfont\bfseries\color{utcgray_light}}
+  {\thesubparagraph}
+  {0.5em}
+  {}
 
 % Header and footer
 \renewcommand{\headrulewidth}{0.5pt} % Thickness of the header line 
