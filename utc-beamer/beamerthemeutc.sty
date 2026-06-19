@@ -50,6 +50,26 @@
 \newcommand{\logoutc}[1]{\includegraphics[#1]{utc-common/utc_su_logo.png}}
 \newcommand{\logoutctext}{UNIVERSITÉ DE TECHNOLOGIE DE COMPIÈGNE}
 
+% Partner logo.
+% Set it in your main .tex file with, e.g.:   \partnerlogo{img/partner_logo.png}
+\def\@partnerlogo{}
+\newcommand{\partnerlogo}[1]{\def\@partnerlogo{#1}}
+
+% Size of the partner logo. Default keeps it close to the UTC logo's height.
+% Override with \partnerlogosize{height=Xcm}
+\def\@partnerlogosize{height=1cm}
+\newcommand{\partnerlogosize}[1]{\def\@partnerlogosize{#1}}
+
+% Inserts the partner logo (bottom-aligned with the UTC logo) if one was set.
+\newcommand{\insertpartnerlogo}{%
+  \ifx\@partnerlogo\@empty
+    \relax
+  \else
+    \raisebox{-11pt}[0pt]{%
+      \expandafter\includegraphics\expandafter[\@partnerlogosize]{\@partnerlogo}}%
+  \fi
+}
+
 % Command to insert properly the semester
 \newcommand{\insertuvsemester}{
   \ifx\@uv\@empty
@@ -71,7 +91,8 @@
 
 % Title page of the beamer
 \newcommand{\utctitlepage}{
-  \raisebox{-11pt}[0pt]{\logoutc{width=3cm}}
+  \raisebox{-11pt}[11pt]{\logoutc{width=3cm}}%
+  \hfill\insertpartnerlogo
   \usebeamercolor{inverted structure}
   \begin{center}
     \vfill
@@ -102,7 +123,8 @@
 
 % End page of the beamer
 \newcommand{\utcthankspage}[1][Thanks]{
-  \raisebox{-11pt}[0pt]{\logoutc{width=3cm}}
+  \raisebox{-11pt}[11pt]{\logoutc{width=3cm}}%
+  \hfill\insertpartnerlogo
   \usebeamercolor{inverted structure}
   \begin{center}
     \vfill
