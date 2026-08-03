@@ -34,4 +34,5 @@ A shell script 'setup.sh' is provided to automate the installation on Linux only
 ## Contributors
     
  - Thanks to [Hugo Pereira](https://github.com/tigrou23) for his awesome work on the CI/CD process.
+ - Thanks to [dhashmes](https://github.com/dhashmes) for the support of partner logos on the beamer template
  - Thanks to the original authors.
